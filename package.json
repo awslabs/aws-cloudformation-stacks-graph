@@ -1,0 +1,69 @@
+{
+  "name": "aws-cloudformation-stacks-graph",
+  "version": "1.0.0",
+  "types": "./dist/__types__",
+  "bin": {
+    "cfn-stacks-graph": "dist/bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "postinstall": "npm run prepare",
+    "prebuild:dev": "npm run clean",
+    "build:dev": "tsc --build ./tsconfig-dev.json",
+    "clean": "rm -rf dist",
+    "lint": "prettier --check \"./**/*.{js,ts,json,md}\" && eslint \"./**/*.{js,ts}\" && sort-package-json --check package.json",
+    "lint:fix": "prettier --write \"./**/*.{js,ts,json,md}\" && eslint --fix \"./**/*.{js,ts}\" && sort-package-json package.json",
+    "precommit:eslint": "eslint --fix",
+    "precommit:prettier": "prettier --write",
+    "precommit:sort-package-json": "sort-package-json",
+    "prepublishOnly": "npm run lint:fix && npm run build",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,json,md}": [
+      "npm run precommit:prettier"
+    ],
+    "**/*.{js,ts}": [
+      "npm run precommit:eslint"
+    ],
+    "**/package.json": [
+      "npm run precommit:sort-package-json"
+    ]
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudformation": "^3.27.0",
+    "@aws-sdk/credential-provider-node": "^3.27.0",
+    "@mermaid-js/mermaid-cli": "^8.11.5",
+    "args": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/args": "^3.0.1",
+    "@types/node": "^16.7.2",
+    "@typescript-eslint/eslint-plugin": "~4.29.3",
+    "@typescript-eslint/parser": "~4.29.3",
+    "eslint": "~7.32.0",
+    "eslint-config-prettier": "~8.3.0",
+    "eslint-plugin-import": "~2.24.2",
+    "eslint-plugin-jasmine": "~4.1.2",
+    "eslint-plugin-no-only-tests": "~2.6.0",
+    "eslint-plugin-prettier": "~3.4.1",
+    "husky": "~7.0.2",
+    "import-sort-style-module": "~6.0.0",
+    "lint-staged": "~11.1.2",
+    "prettier": "~2.3.2",
+    "prettier-plugin-import-sort": "~0.0.7",
+    "sort-package-json": "~1.50.0",
+    "typescript": "^4.4.2"
+  },
+  "importSort": {
+    ".js, .ts": {
+      "style": "module",
+      "parser": "typescript"
+    }
+  }
+}
