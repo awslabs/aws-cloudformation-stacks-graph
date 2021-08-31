@@ -1,4 +1,4 @@
-# aws-cloudformation-stacks-graph
+# aws-cloudformation-stacks-graph [![NPM][npm-image]][npm-url]
 
 Generate a network diagram of the CloudFormation stacks using the import/export dependencies that exist amongst them.
 
@@ -69,3 +69,6 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 ### License
 
 This project is licensed under the Apache-2.0 License.
+
+[npm-image]: https://img.shields.io/npm/v/aws-cloudformation-stacks-graph
+[npm-url]: https://www.npmjs.com/package/aws-cloudformation-stacks-graph
