@@ -60,16 +60,16 @@
     ]
   },
   "dependencies": {
-    "@aws-sdk/client-cloudformation": "^3.27.0",
-    "@aws-sdk/credential-provider-node": "^3.27.0",
-    "@mermaid-js/mermaid-cli": "^8.11.5",
+    "@aws-sdk/client-cloudformation": "^3.28.0",
+    "@aws-sdk/credential-provider-node": "^3.28.0",
+    "@mermaid-js/mermaid-cli": "^8.12.0",
     "args": "^5.0.1"
   },
   "devDependencies": {
     "@types/args": "^3.0.1",
-    "@types/node": "^16.7.2",
-    "@typescript-eslint/eslint-plugin": "~4.29.3",
-    "@typescript-eslint/parser": "~4.29.3",
+    "@types/node": "^16.7.9",
+    "@typescript-eslint/eslint-plugin": "~4.30.0",
+    "@typescript-eslint/parser": "~4.30.0",
     "eslint": "~7.32.0",
     "eslint-config-prettier": "~8.3.0",
     "eslint-plugin-import": "~2.24.2",
