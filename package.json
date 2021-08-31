@@ -31,7 +31,8 @@
   },
   "files": [
     "bin",
-    "dist"
+    "dist",
+    "mermaidRenderConfig.json"
   ],
   "scripts": {
     "prebuild": "npm run clean",
