@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+. "$(dirname "$0")/_/husky.sh"
+
+npx lint-staged

@@ -1,0 +1,12 @@
+{
+  "maxTextSize": 99999999,
+  "flowchart": {
+    "diagramPadding": 1,
+    "htmlLabels": true,
+    "nodeSpacing": 50,
+    "rankSpacing": 50,
+    "curve": "basis",
+    "defaultRenderer": "dagre-d3",
+    "useMaxWidth": false
+  }
+}
