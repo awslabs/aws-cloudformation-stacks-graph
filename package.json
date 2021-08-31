@@ -41,6 +41,7 @@
     "prebuild:dev": "npm run clean",
     "build:dev": "tsc --build ./tsconfig-dev.json",
     "clean": "rm -rf dist",
+    "test": "echo 'No Unit Tests Yet'",
     "lint": "prettier --check \"./**/*.{js,ts,json,md}\" && eslint \"./**/*.{js,ts}\" && sort-package-json --check package.json",
     "lint:fix": "prettier --write \"./**/*.{js,ts,json,md}\" && eslint --fix \"./**/*.{js,ts}\" && sort-package-json package.json",
     "precommit:eslint": "eslint --fix",
