@@ -42,5 +42,7 @@ graph.query(profile, region).then((config) => {
   console.log('See output files: ');
   console.log(stacksGraphOutput);
 
+  renderer.cleanIntermediateFiles();
+
   process.exit(0);
 });

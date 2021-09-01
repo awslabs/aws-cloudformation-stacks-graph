@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: Apache-2.0
 
-import child_process from 'child_process';
+import { execSync } from 'child_process';
 import fs from 'fs';
 
 import { MermaidConfig } from './MermaidConfig';
@@ -18,8 +18,9 @@ export class MermaidRenderer {
       }
     );
 
-    child_process.execSync(
-      `npx mmdc --input '${MermaidRenderer.TempMermaidDefinitionFilePath}' --output '${outputFilePath}' --pdfFit --configFile='./mermaidRenderConfig.json'`
+    execSync(
+      `npx @mermaid-js/mermaid-cli --input '${MermaidRenderer.TempMermaidDefinitionFilePath}' --output '${outputFilePath}' --pdfFit --configFile='${__dirname}/../../../mermaidRenderConfig.json'`,
+      { stdio: 'inherit' }
     );
   }
 
