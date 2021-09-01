@@ -1,6 +1,6 @@
 {
   "name": "aws-cloudformation-stacks-graph",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Generate a network diagram of the CloudFormation stacks using the import/export dependencies that exist amongst them.",
   "keywords": [
     "aws cloudformation",
