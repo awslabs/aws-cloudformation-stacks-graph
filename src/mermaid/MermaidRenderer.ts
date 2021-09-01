@@ -22,14 +22,17 @@ export class MermaidRenderer {
       }
     );
 
+    const appInstallFolder = path.join(__dirname, '..', '..', '..');
     const configFilePath = path.join(
-      __dirname,
-      '..',
-      '..',
-      '..',
+      appInstallFolder,
       'mermaidRenderConfig.json'
     );
-    const mermaidCli = path.join('.', 'node_modules', '.bin', 'mmdc');
+    const mermaidCli = path.join(
+      appInstallFolder,
+      'node_modules',
+      '.bin',
+      'mmdc'
+    );
     execSync(
       `${mermaidCli} --input '${MermaidRenderer.TempMermaidDefinitionFilePath}' --output '${outputFilePath}' --pdfFit --configFile='${configFilePath}'`,
       { stdio: 'inherit' }
