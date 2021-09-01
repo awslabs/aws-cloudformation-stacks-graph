@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { execSync } from 'child_process';
-import fs from 'fs';
+import { promises } from 'fs';
 import path from 'path';
 
 import { MermaidConfig } from './MermaidConfig';
@@ -13,8 +13,11 @@ export class MermaidRenderer {
     'cfn-stacks-graph.mmd'
   );
 
-  render(mermaidConfig: MermaidConfig, outputFilePath: string): void {
-    fs.writeFileSync(
+  async render(
+    mermaidConfig: MermaidConfig,
+    outputFilePath: string
+  ): Promise<void> {
+    await promises.writeFile(
       MermaidRenderer.TempMermaidDefinitionFilePath,
       mermaidConfig.code,
       {
@@ -39,7 +42,7 @@ export class MermaidRenderer {
     );
   }
 
-  cleanIntermediateFiles(): void {
-    fs.unlinkSync(MermaidRenderer.TempMermaidDefinitionFilePath);
+  async cleanIntermediateFiles(): Promise<void> {
+    await promises.unlink(MermaidRenderer.TempMermaidDefinitionFilePath);
   }
 }

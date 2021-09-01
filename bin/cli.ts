@@ -20,29 +20,36 @@ args
   .option('output', 'Output file name', 'cfn-stacks-graph')
   .option('format', 'Output file format. Should be pdf, png or svg.', 'pdf');
 
-const flags = args.parse(process.argv);
-const profile: string =
-  flags.profile === 'default'
-    ? process.env.AWS_PROFILE || 'default'
-    : flags.profile;
-const region: string = flags.region;
+process.on('unhandledRejection', (err) => {
+  console.error(err instanceof Error ? err.message : err);
+  process.exit(-1);
+});
 
-const extension = ['pdf', 'png', 'svg'].includes(flags.format.toLowerCase())
-  ? flags.format.toLowerCase()
-  : 'pdf';
+(async () => {
+  const flags = args.parse(process.argv);
+  const profile: string =
+    flags.profile === 'default'
+      ? process.env.AWS_PROFILE || 'default'
+      : flags.profile;
+  const region: string = flags.region;
 
-const stacksGraphOutput = `${flags.output}.${extension}`;
+  const extension = ['pdf', 'png', 'svg'].includes(flags.format.toLowerCase())
+    ? flags.format.toLowerCase()
+    : 'pdf';
 
-const graph = new CloudFormationGraph();
-graph.query(profile, region).then((config) => {
+  const stacksGraphOutput = `${flags.output}.${extension}`;
+
+  const graph = new CloudFormationGraph();
+  const config = await graph.query(profile, region);
+
   console.log('Rendering...');
   const renderer = new mermaid.MermaidRenderer();
-  renderer.render(config, stacksGraphOutput);
+  await renderer.render(config, stacksGraphOutput);
 
   console.log('See output files: ');
   console.log(stacksGraphOutput);
 
-  renderer.cleanIntermediateFiles();
+  await renderer.cleanIntermediateFiles();
 
   process.exit(0);
-});
+})();
