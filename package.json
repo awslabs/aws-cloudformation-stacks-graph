@@ -37,7 +37,6 @@
   "scripts": {
     "prebuild": "npm run clean",
     "build": "tsc",
-    "postinstall": "npm run prepare",
     "prebuild:dev": "npm run clean",
     "build:dev": "tsc --build ./tsconfig-dev.json",
     "clean": "rm -rf dist",
