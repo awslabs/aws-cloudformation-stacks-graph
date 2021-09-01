@@ -2,7 +2,7 @@
 
 Generate a network diagram of the CloudFormation stacks using the import/export dependencies that exist amongst them.
 
-This helps to visualize the dependency complexity between various stacks in an application and the shows the deployment order for these stacks.
+This helps to visualize the dependency complexity between various stacks in an application and shows the deployment order for these stacks.
 
 ### Usage
 
