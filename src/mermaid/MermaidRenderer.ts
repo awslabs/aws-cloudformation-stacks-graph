@@ -8,8 +8,7 @@ import path from 'path';
 import { MermaidConfig } from './MermaidConfig';
 
 export class MermaidRenderer {
-  private static TempMermaidDefinitionFilePath = path.join(
-    '.',
+  private static TempMermaidDefinitionFilePath = path.resolve(
     'cfn-stacks-graph.mmd'
   );
 
