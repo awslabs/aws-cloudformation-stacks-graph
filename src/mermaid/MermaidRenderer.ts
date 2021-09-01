@@ -3,11 +3,15 @@
 
 import { execSync } from 'child_process';
 import fs from 'fs';
+import path from 'path';
 
 import { MermaidConfig } from './MermaidConfig';
 
 export class MermaidRenderer {
-  private static TempMermaidDefinitionFilePath = './cfn-stacks-graph.mmd';
+  private static TempMermaidDefinitionFilePath = path.join(
+    '.',
+    'cfn-stacks-graph.mmd'
+  );
 
   render(mermaidConfig: MermaidConfig, outputFilePath: string): void {
     fs.writeFileSync(
@@ -18,8 +22,16 @@ export class MermaidRenderer {
       }
     );
 
+    const configFilePath = path.join(
+      __dirname,
+      '..',
+      '..',
+      '..',
+      'mermaidRenderConfig.json'
+    );
+    const mermaidCli = path.join('.', 'node_modules', '.bin', 'mmdc');
     execSync(
-      `npx @mermaid-js/mermaid-cli --input '${MermaidRenderer.TempMermaidDefinitionFilePath}' --output '${outputFilePath}' --pdfFit --configFile='${__dirname}/../../../mermaidRenderConfig.json'`,
+      `${mermaidCli} --input '${MermaidRenderer.TempMermaidDefinitionFilePath}' --output '${outputFilePath}' --pdfFit --configFile='${configFilePath}'`,
       { stdio: 'inherit' }
     );
   }
