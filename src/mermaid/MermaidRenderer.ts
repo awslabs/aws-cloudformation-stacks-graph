@@ -8,7 +8,8 @@ import path from 'path';
 import { MermaidConfig } from './MermaidConfig';
 
 export class MermaidRenderer {
-  private static TempMermaidDefinitionFilePath = path.resolve(
+  private static TempMermaidDefinitionFilePath = path.join(
+    '.',
     'cfn-stacks-graph.mmd'
   );
 
@@ -36,7 +37,7 @@ export class MermaidRenderer {
       'mmdc'
     );
     execSync(
-      `${mermaidCli} --input '${MermaidRenderer.TempMermaidDefinitionFilePath}' --output '${outputFilePath}' --pdfFit --configFile='${configFilePath}'`,
+      `${mermaidCli} --input ${MermaidRenderer.TempMermaidDefinitionFilePath} --output ${outputFilePath} --pdfFit --configFile=${configFilePath}`,
       { stdio: 'inherit' }
     );
   }
