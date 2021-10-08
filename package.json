@@ -40,14 +40,14 @@
     "prebuild:dev": "npm run clean",
     "build:dev": "tsc --build ./tsconfig-dev.json",
     "clean": "rm -rf dist",
-    "test": "echo 'No Unit Tests Yet'",
     "lint": "prettier --check \"./**/*.{js,ts,json,md}\" && eslint \"./**/*.{js,ts}\" && sort-package-json --check package.json",
     "lint:fix": "prettier --write \"./**/*.{js,ts,json,md}\" && eslint --fix \"./**/*.{js,ts}\" && sort-package-json package.json",
     "precommit:eslint": "eslint --fix",
     "precommit:prettier": "prettier --write",
     "precommit:sort-package-json": "sort-package-json",
+    "prepare": "husky install",
     "prepublishOnly": "npm run lint:fix && npm run build",
-    "prepare": "husky install"
+    "test": "echo 'No Unit Tests Yet'"
   },
   "lint-staged": {
     "**/*.{js,ts,json,md}": [
@@ -61,16 +61,16 @@
     ]
   },
   "dependencies": {
-    "@aws-sdk/client-cloudformation": "^3.28.0",
-    "@aws-sdk/credential-provider-node": "^3.28.0",
-    "@mermaid-js/mermaid-cli": "^8.12.0",
+    "@aws-sdk/client-cloudformation": "^3.36.0",
+    "@aws-sdk/credential-provider-node": "^3.36.0",
+    "@mermaid-js/mermaid-cli": "^8.13.2",
     "args": "^5.0.1"
   },
   "devDependencies": {
     "@types/args": "^3.0.1",
-    "@types/node": "^16.7.9",
-    "@typescript-eslint/eslint-plugin": "~4.30.0",
-    "@typescript-eslint/parser": "~4.30.0",
+    "@types/node": "^16.10.3",
+    "@typescript-eslint/eslint-plugin": "~4.33.0",
+    "@typescript-eslint/parser": "~4.33.0",
     "eslint": "~7.32.0",
     "eslint-config-prettier": "~8.3.0",
     "eslint-plugin-import": "~2.24.2",
@@ -79,11 +79,11 @@
     "eslint-plugin-prettier": "~3.4.1",
     "husky": "~7.0.2",
     "import-sort-style-module": "~6.0.0",
-    "lint-staged": "~11.1.2",
-    "prettier": "~2.3.2",
+    "lint-staged": "~11.2.0",
+    "prettier": "~2.4.1",
     "prettier-plugin-import-sort": "~0.0.7",
-    "sort-package-json": "~1.50.0",
-    "typescript": "^4.4.2"
+    "sort-package-json": "~1.52.0",
+    "typescript": "^4.4.3"
   },
   "importSort": {
     ".js, .ts": {
